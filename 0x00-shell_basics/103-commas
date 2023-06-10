@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ap1 | sort -df --version-sort | awk '{ORS=(NR%2==0? "\n" : ", ")}1' | sed 's/,$/\n/'
+ls -ap1 | sort -d -k1.1 | awk '{ORS=(NR%2==0? ", " : "\n")}1' | sed 's|/$|/|' | sed '$!s|, |,|g; $s|,|\n|'
